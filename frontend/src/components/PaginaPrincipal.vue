@@ -28,7 +28,7 @@ export default {
     data: () =>({
         text: {
             title: 'The Content Box',
-            subtitle: 'films · music · podcast · apps · books',
+            subtitle: 'films · music · podcast',
             slogan: 'Own your content!'
         }
     }),

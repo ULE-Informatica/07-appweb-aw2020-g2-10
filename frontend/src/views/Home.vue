@@ -33,7 +33,7 @@ export default {
     },
     data: () => ({
         drawer: false,
-        usuarioLogeado: true,
+        usuarioLogeado: false,
     }),
     methods: {
         ocultarDrawer: function() {

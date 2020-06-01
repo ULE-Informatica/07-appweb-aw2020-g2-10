@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors')
+const axios = require('axios');
+
 
 const User = require('./models/User');
 
@@ -26,12 +28,25 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.get('/', function (req, res) {
-    User.findAll()
-        .then(users => {
-            console.log(users);
-            res.sendStatus(200);
+
+    // Make a request for a user with a given ID
+    axios.get('https://api.deezer.com/playlist/1116190041')
+        .then(response => {
+            // handle success
+            console.log(response.data.data);
+            res.send(response.data.tracks);
         })
-        .catch(err => console.log(err));
+        .catch(error => {
+            // handle error
+            console.log(error);
+        })
+
+    // User.findAll()
+    //     .then(users => {
+    //         console.log(users);
+    //         res.sendStatus(200);
+    //     })
+    //     .catch(err => console.log(err));
 });
 
 app.get('/data', function (req, res) {
