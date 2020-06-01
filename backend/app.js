@@ -10,6 +10,10 @@ const User = require('./models/User');
 // Database
 const db = require('./config/database');
 
+// URLS
+const urls = require(__dirname + '/config/paths.json');
+
+
 // Para comprobar la conexión a la BDD
 db.authenticate()
     .then(() => {
@@ -30,23 +34,15 @@ app.use(cors())
 app.get('/', function (req, res) {
 
     // Make a request for a user with a given ID
-    axios.get('https://api.deezer.com/playlist/1116190041')
+    axios.get(urls.MUSICA.top_50)
         .then(response => {
             // handle success
-            console.log(response.data.data);
-            res.send(response.data.tracks);
+            res.send(response.data.tracks.data);
         })
         .catch(error => {
-            // handle error
+            // handle error 
             console.log(error);
         })
-
-    // User.findAll()
-    //     .then(users => {
-    //         console.log(users);
-    //         res.sendStatus(200);
-    //     })
-    //     .catch(err => console.log(err));
 });
 
 app.get('/data', function (req, res) {
