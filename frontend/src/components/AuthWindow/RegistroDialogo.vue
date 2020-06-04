@@ -64,6 +64,7 @@
 
 <script>
 import AuthService from '@/utils/Auth';
+import store from '@/store/index';
 
 
 export default {
@@ -71,25 +72,21 @@ export default {
     return {
       name: '',
       nameRules: [
-        v => !!v || 'Name is required',
+        v => !!v || 'Nombre es un campo obligatorio',
       ],
       email: '',
       emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid',
+        v => !!v || 'E-mail es un campo obligatorio',
+        v => /.+@.+/.test(v) || 'E-mail es un  campo obligatorio',
       ],
       username: '',
       usernameRules: [
-        v => !!v || 'Username is required',
-      ],
-      address: '',
-      addressRules: [
-        v => !!v || 'Address is required',
+        v => !!v || 'Nombre de usuario es un campo obligatorio',
       ],
       password: '',
       passwordRules: [
-        v => !!v || 'Password is required',
-        v => (v && v.length >= 6) || 'Password must be more than 6 characters',
+        v => !!v || 'Contraseña es un campo boligatorio',
+        v => (v && v.length >= 6) || 'Contraseña es un campo boligatorio',
       ],
       error: null,
       valid: false,
@@ -107,14 +104,12 @@ export default {
           username: this.username,
           password: this.password,
         });
-        this.$store.dispatch('setToken', response.data.token);
-        this.$store.dispatch('setUser', response.data.user);
+        store.dispatch('setToken', response.data.token);
+        store.dispatch('setUser', response.data.user);
         this.$emit('done');
         this.$refs.form.reset();
       } catch (error) {
         this.error = error.response.data.error;
-      } finally {
-        this.$refs.recaptcha.reset();
       }
     },
   },

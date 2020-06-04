@@ -6,6 +6,6 @@ export default () => axios.create({
     ? 'https://audifactory.herokuapp.com/'
     : 'http://localhost:3000/',
   headers: {
-    Authorization: `Bearer ${store.state.auth.token}`,
+    Authorization: `Bearer ${store.state.token}`,
   },
 });

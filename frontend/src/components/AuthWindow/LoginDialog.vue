@@ -1,6 +1,9 @@
 <template>
   <v-card>
-    <v-img height="120px" src="https://www.lucushost.com/blog/wp-content/uploads/2018/04/como-proteger-login-wordpress.png">
+    <v-img
+      height="120px"
+      src="https://www.lucushost.com/blog/wp-content/uploads/2018/04/como-proteger-login-wordpress.png"
+    >
       <v-container fill-height fluid>
         <v-layout>
           <v-flex xs12 align-end d-flex>
@@ -14,16 +17,16 @@
       <div class="error" v-html="error" />
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
-          v-model="email"
-          prepend-icon="email"
-          type="email"
-          label="Email"
-          :rules="emailRules"
+          v-model="username"
+          prepend-icon="mdi-email"
+          type="username"
+          label="Nombre de usuario"
+          :rules="usernameRules"
           required
         ></v-text-field>
         <v-text-field
           v-model="password"
-          prepend-icon="lock"
+          prepend-icon="mdi-lock"
           type="password"
           label="Password"
           :rules="passwordRules"
@@ -31,46 +34,64 @@
         ></v-text-field>
       </v-form>
     </v-card-text>
-
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn color="primary" :disabled="!valid" @click="login">Iniciar sesión</v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
 <script>
+import AuthService from '@/utils/Auth';
+import store from '@/store/index';
+
 export default {
   data() {
     return {
-      email: "",
-      emailRules: [
-        v => !!v || "E-mail is required",
-        v => /.+@.+/.test(v) || "E-mail must be valid"
-      ],
+      username: "",
+      usernameRules: [v => !!v || "El nombre de usuario es un campo obligatorio"],
       password: "",
       passwordRules: [
-        v => !!v || "Password is required",
-        v => (v && v.length >= 6) || "Password must be more than 6 characters"
+        v => !!v || "Contraseña es un campo obligatorio",
+        v =>
+          (v && v.length >= 6) || "La contraseña debe tener más de 6 caracteres"
       ],
       error: null,
-      valid: false,
-      recaptchaResponse: null,
+      valid: false
     };
   },
   mounted() {
     this.valid = false;
   },
   methods: {
+    async login() {
+      try {
+        const response = await AuthService.login({
+          username: this.username,
+          password: this.password,
+        });
+        console.log(response);
+        store.dispatch('setToken', response.data.token);
+        store.dispatch('setUser', response.data.user);
+        this.$emit('done');
+        this.$refs.form.reset();
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.link {
-  font-size: 1.1em;
-  padding-left: 15px;
-  text-decoration: none;
-}
-.error {
-  color: white;
-  border-radius: 4px;
-  padding-left: 4px;
-}
+  .link {
+    font-size: 1.1em;
+    padding-left: 15px;
+    text-decoration: none;
+  }
+  .error {
+    color: white;
+    border-radius: 4px;
+    padding-left: 4px;
+  }
 </style>

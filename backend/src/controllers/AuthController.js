@@ -29,5 +29,36 @@ module.exports = {
                 error: 'Error insertando usuario',
             });
         }
-    }
+    },
+    async login(req, res) {
+        try {
+            const { username, password } = req.body.credential;
+            const user = await User.findOne({
+                where: {
+                    username,
+                },
+            });
+            if (!user) {
+                res.status(403).send({
+                    error: 'El usuario no existe',
+                });
+            }
+            if (user.dataValues.password != password){
+                res.status(403).send({
+                    error: 'La contraseña es incorrecta',
+                });
+            }
+            const userJson = user.toJSON();
+            delete userJson.password;
+            res.send({
+                user: userJson,
+                token: jwtSignUser(userJson),
+            });
+        } catch (err) {
+            console.log(err);
+            res.status(500) .send({
+                error: 'Error interno',
+            });
+        }
+    },
 };

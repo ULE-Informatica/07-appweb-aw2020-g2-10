@@ -59,8 +59,6 @@
           </v-col>
         </v-row>
         <div slot="no-data">
-          <v-progress-circular indeterminate color="pink">
-          </v-progress-circular>
         </div>
       </v-flex>
     </v-layout>
@@ -68,7 +66,6 @@
 </template>
 
 <script>
-import Api from '../utils/API';
 
 export default {
   name: "ListaEjemplos",
@@ -77,20 +74,6 @@ export default {
     playing: false,
     currentAudio: new Audio()
   }),
-  mounted: function() {
-    console.log("Se ha ejecutado mounted!");
-
-    Api()
-      .get("http://localhost:3000/tracks")
-      .then(response => {
-        // handle success
-        this.tracks = response.data;
-      })
-      .catch(error => {
-        // handle error
-        console.log(error);
-      });
-  },
   methods: {
     play(audio) {
       this.playing = true;
