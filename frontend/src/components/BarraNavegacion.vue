@@ -8,13 +8,21 @@
     </v-toolbar-title>
     <v-spacer />
     <v-toolbar-items v-if="isUserLoggedIn" class="align-center">
+      <v-chip
+      class="ma-2 text--primary"
+      color="white"
+      label
+    >
+      <v-icon left>mdi-face</v-icon>
+      {{user.username}}
+    </v-chip>
       <v-btn text icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
       <v-btn text icon>
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
-      <v-btn text icon class="font-weight-bold red--text">
+      <v-btn text @click="logout" icon class="font-weight-bold red--text">
         <v-icon>mdi-logout</v-icon>
       </v-btn>
     </v-toolbar-items>
@@ -27,18 +35,25 @@
 <script>
 import { mapState } from "vuex";
 import AuthPopUp from "@/components/AuthWindow/AuthPopUp.vue";
+import store from '@/store/index';
 
 export default {
   name: "BarraNavegacion",
   components: {
     AuthPopUp
   },
-  computed: mapState(["isUserLoggedIn"]),
+  computed: mapState(["isUserLoggedIn", "user"]),
   data: () => ({
     text: {
       texto_boton: "LOG OUT",
       titulo: "The Content Box 📦"
     }
-  })
+  }),
+  methods: {
+    logout() {
+      store.dispatch('setToken', null);
+      store.dispatch('setUser', null);
+    }
+  }
 };
 </script>
