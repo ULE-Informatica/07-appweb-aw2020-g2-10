@@ -23,9 +23,7 @@
                       dark
                       @click.prevent="pause()"
                     >
-                      <v-icon :class="{ 'show-btns': hover }">
-                        > mdi-pause-circle-outline
-                      </v-icon>
+                      <v-icon :class="{ 'show-btns': hover }">> mdi-pause-circle-outline</v-icon>
                     </v-btn>
                     <v-btn
                       v-if="!playing"
@@ -35,23 +33,23 @@
                       dark
                       @click.prevent="play(item.preview)"
                     >
-                      <v-icon :class="{ 'show-btns': hover }">
-                        > mdi-play-circle-outline
-                      </v-icon>
+                      <v-icon :class="{ 'show-btns': hover }">> mdi-play-circle-outline</v-icon>
                     </v-btn>
                   </v-img>
                 </div>
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <v-list-item-subtitle class="overline mb-4">{{
+                    <v-list-item-subtitle class="overline mb-4">
+                      {{
                       item.artist.name
-                    }}</v-list-item-subtitle>
-                    <v-list-item-title class="headline mb-1">{{
+                      }}
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="headline mb-1">
+                      {{
                       item.title
-                    }}</v-list-item-title>
-                    <span class="pink--text font-weight-bold font-smaller"
-                      >Ya disponible!</span
-                    >
+                      }}
+                    </v-list-item-title>
+                    <span class="pink--text font-weight-bold font-smaller">Ya disponible!</span>
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
@@ -59,6 +57,8 @@
           </v-col>
         </v-row>
         <div slot="no-data">
+          <v-progress-circular indeterminate color="pink">
+          </v-progress-circular>
         </div>
       </v-flex>
     </v-layout>
@@ -66,9 +66,10 @@
 </template>
 
 <script>
+const axios = require("axios");
 
 export default {
-  name: "ListaEjemplos",
+  name: "Top50",
   data: () => ({
     tracks: [],
     playing: false,
@@ -85,6 +86,18 @@ export default {
       this.currentAudio.pause();
       this.currentAudio = new Audio();
     }
+  },
+  mounted: function() {
+    axios
+      .get("http://localhost:3000/tracks")
+      .then(response => {
+        // handle success
+        this.tracks = response.data;
+      })
+      .catch(error => {
+        // handle error
+        console.log(error);
+      });
   }
 };
 </script>
@@ -111,3 +124,4 @@ export default {
   border: none;
 }
 </style>
+

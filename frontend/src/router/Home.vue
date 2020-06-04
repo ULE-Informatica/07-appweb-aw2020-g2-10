@@ -7,18 +7,18 @@
           <h4 class="subheading">{{ text.slogan }}</h4>
         </v-layout>
       </v-parallax>
-      <ListaEjemplos />
+      <Top50 />
   </div>
 </template>
 
 <script>
-import ListaEjemplos from "@/components/ListaEjemplos.vue";
+import Top50 from "@/components/Top50.vue";
 
 
 export default {
   name: "Home",
   components: {
-    ListaEjemplos
+    Top50
   },
   props: {
     source: String

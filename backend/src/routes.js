@@ -1,5 +1,7 @@
 const AuthController = require('./controllers/AuthController');
 const AuthControllerRule = require('./rules/AuthControllerRule');
+const TrackController = require('./controllers/TrackController');
+const urls = require('./config/paths.json');
 
 module.exports = (app) => {
     
@@ -11,6 +13,10 @@ module.exports = (app) => {
 
     // LOGIN
     app.post('/login',
-    AuthControllerRule.requirement,
-    AuthController.login);
+        AuthControllerRule.requirement,
+        AuthController.login);
+
+    // TOP 50
+    app.get('/tracks',
+        TrackController.getTracklist);
 };
