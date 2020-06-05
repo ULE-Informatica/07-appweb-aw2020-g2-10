@@ -11,7 +11,7 @@
                 :class="{ 'on-hover': hover }"
                 slot="item"
                 max-width="280px"
-                class="mx-auto"
+                class="ml-2 mr-2 mb-2"
               >
                 <div class="align-self-center" style="position: relative;">
                   <v-img :src="item.album.cover_xl" height="260px">
@@ -23,7 +23,9 @@
                       dark
                       @click.prevent="pause()"
                     >
-                      <v-icon :class="{ 'show-btns': hover }">> mdi-pause-circle-outline</v-icon>
+                      <v-icon :class="{ 'show-btns': hover }"
+                        >> mdi-pause-circle-outline</v-icon
+                      >
                     </v-btn>
                     <v-btn
                       v-if="!playing"
@@ -33,23 +35,23 @@
                       dark
                       @click.prevent="play(item.preview)"
                     >
-                      <v-icon :class="{ 'show-btns': hover }">> mdi-play-circle-outline</v-icon>
+                      <v-icon :class="{ 'show-btns': hover }"
+                        >> mdi-play-circle-outline</v-icon
+                      >
                     </v-btn>
                   </v-img>
                 </div>
                 <v-list-item three-line>
                   <v-list-item-content>
                     <v-list-item-subtitle class="overline mb-4">
-                      {{
-                      item.artist.name
-                      }}
+                      {{ item.artist.name }}
                     </v-list-item-subtitle>
                     <v-list-item-title class="headline mb-1">
-                      {{
-                      item.title
-                      }}
+                      {{ item.title }}
                     </v-list-item-title>
-                    <span class="pink--text font-weight-bold font-smaller">Ya disponible!</span>
+                    <span class="pink--text font-weight-bold font-smaller"
+                      >Ya disponible!</span
+                    >
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
@@ -124,4 +126,3 @@ export default {
   border: none;
 }
 </style>
-

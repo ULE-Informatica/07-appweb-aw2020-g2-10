@@ -7,14 +7,14 @@ Vue.use(VueRouter);
 export default new VueRouter({
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home,
+      path: "/",
+      name: "home",
+      component: Home
     },
     {
-      path: '*',
-      redirect: '/',
+      path: "*",
+      redirect: "/"
       // TODO: Add 404 page
-    },
-  ],
+    }
+  ]
 });

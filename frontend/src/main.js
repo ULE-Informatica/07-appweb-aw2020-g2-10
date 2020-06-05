@@ -3,11 +3,10 @@ import App from "./App.vue";
 import router from "./router/index";
 import store from "./store/index";
 import vuetify from "./plugins/vuetify";
-import { sync } from 'vuex-router-sync';
-import Vuex from 'vuex'
+import { sync } from "vuex-router-sync";
+import Vuex from "vuex";
 
-
-Vue.use(Vuex)
+Vue.use(Vuex);
 sync(store, router);
 
 Vue.config.productionTip = false;

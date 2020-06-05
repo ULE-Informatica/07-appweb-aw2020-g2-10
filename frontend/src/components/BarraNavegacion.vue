@@ -1,21 +1,21 @@
 <template>
   <v-app-bar color="primary" dark app flat fixed>
     <v-toolbar-items class="align-center">
-      <v-img height="50" width="50" :src="require('../assets/logo_fondo_azul.png')"></v-img>
+      <v-img
+        height="50"
+        width="50"
+        :src="require('../assets/logo_fondo_azul.png')"
+      ></v-img>
     </v-toolbar-items>
     <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
       <span class="mr-3 font-weight-bold">{{ text.titulo }}</span>
     </v-toolbar-title>
     <v-spacer />
     <v-toolbar-items v-if="isUserLoggedIn" class="align-center">
-      <v-chip
-      class="ma-2 text--primary"
-      color="white"
-      label
-    >
-      <v-icon left>mdi-face</v-icon>
-      {{user.username}}
-    </v-chip>
+      <v-chip class="ma-2 text--primary" color="white" label>
+        <v-icon left>mdi-face</v-icon>
+        {{ user.username }}
+      </v-chip>
       <v-btn text icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
@@ -35,7 +35,7 @@
 <script>
 import { mapState } from "vuex";
 import AuthPopUp from "@/components/AuthWindow/AuthPopUp.vue";
-import store from '@/store/index';
+import store from "@/store/index";
 
 export default {
   name: "BarraNavegacion",
@@ -51,8 +51,8 @@ export default {
   }),
   methods: {
     logout() {
-      store.dispatch('setToken', null);
-      store.dispatch('setUser', null);
+      store.dispatch("setToken", null);
+      store.dispatch("setUser", null);
     }
   }
 };
