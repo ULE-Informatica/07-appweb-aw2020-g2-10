@@ -1,9 +1,9 @@
 <template>
   <div id="home">
-    <v-parallax dark :src="require('@/assets/fondoPrincipal.jpg')" height="420">
+    <v-parallax dark :src="require('@/assets/fondoPrincipal.jpg')" height="450">
       <v-layout align-center column justify-center>
-        <h1 class="display-2 font-weight-medium mb-3">{{ text.title }}</h1>
-        <h2 class="display-7 font-weight-thin mb-3">{{ text.subtitle }}</h2>
+        <h1 class="display-4 font-weight-medium mb-3">{{ text.title }}</h1>
+        <h2 class="display-1 font-weight-thin mb-3">{{ text.subtitle }}</h2>
         <h4 class="subheading">{{ text.slogan }}</h4>
       </v-layout>
     </v-parallax>
