@@ -23,9 +23,7 @@
                       dark
                       @click.prevent="pause()"
                     >
-                      <v-icon :class="{ 'show-btns': hover }"
-                        >> mdi-pause-circle-outline</v-icon
-                      >
+                      <v-icon :class="{ 'show-btns': hover }">> mdi-pause-circle-outline</v-icon>
                     </v-btn>
                     <v-btn
                       v-if="!playing"
@@ -35,23 +33,29 @@
                       dark
                       @click.prevent="play(item.preview)"
                     >
-                      <v-icon :class="{ 'show-btns': hover }"
-                        >> mdi-play-circle-outline</v-icon
-                      >
+                      <v-icon :class="{ 'show-btns': hover }">> mdi-play-circle-outline</v-icon>
                     </v-btn>
                   </v-img>
                 </div>
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <v-list-item-subtitle class="overline mb-4">
-                      {{ item.artist.name }}
-                    </v-list-item-subtitle>
-                    <v-list-item-title class="headline mb-1">
-                      {{ item.title }}
-                    </v-list-item-title>
-                    <span class="pink--text font-weight-bold font-smaller"
-                      >Ya disponible!</span
+                    <v-list-item-subtitle class="overline mb-2">{{ item.artist.name }}</v-list-item-subtitle>
+                    <v-list-item-title class="headline mb-1">{{ item.title }}</v-list-item-title>
+                    <v-btn
+                      text
+                      dark
+                      rounded
+                      color="primary"
+                      :to="{
+                        name: 'track-view',
+                        params: {
+                          trackId: item.id,
+                        },
+                      }"
                     >
+                      Ver más
+                      <v-icon class="ml-1">mdi-information-outline</v-icon>
+                    </v-btn>
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
@@ -59,8 +63,7 @@
           </v-col>
         </v-row>
         <div slot="no-data">
-          <v-progress-circular indeterminate color="pink">
-          </v-progress-circular>
+          <v-progress-circular indeterminate color="pink"></v-progress-circular>
         </div>
       </v-flex>
     </v-layout>
@@ -69,7 +72,6 @@
 
 <script>
 import TrackService from "@/utils/Track";
-
 
 export default {
   name: "Top50",
@@ -92,12 +94,12 @@ export default {
   },
   mounted: function() {
     TrackService.getTracks()
-      .then (response => {
+      .then(response => {
         this.tracks = response.data;
       })
-      .catch (error => {
+      .catch(error => {
         console.log(error);
-      })
+      });
   }
 };
 </script>

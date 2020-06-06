@@ -20,6 +20,17 @@
                     y revísala cuando desees.
                 </h2>
             </div>
+            <div class="sm-col-12">
+                <h2 class="text-center header texto h_2"> 
+                    ¡
+                    <span class="span_h2_otro">Puntúalos  </span> 
+                    <v-icon class="span_h2_otro header" size="60px" style="margin-right:2px;" >mdi-star</v-icon>
+                    y 
+                    <span class="span_h2_otro">añade comentarios  </span>
+                    <v-icon class="span_h2_otro header" size="60px" >mdi-comment-processing</v-icon>
+                    a tu gusto!
+                </h2>
+            </div>
         </div>
             <h1 class="text_h h_1 text-center header">
                 ENTRA Y 
@@ -64,6 +75,11 @@ export default {
 .span_h1_naranja {
     font-weight: 500;
     color: #f77f00;
+}
+
+.span_h2_otro {
+    color: #2a9d8f;
+    font-weight: 300;
 }
 
 .imagen {

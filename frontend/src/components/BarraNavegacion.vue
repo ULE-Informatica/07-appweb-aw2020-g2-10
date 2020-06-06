@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="primary" dark app flat fixed>
+  <v-app-bar color="primary" dark app text fixed>
     <v-toolbar-items class="align-center">
       <v-img
         height="50"

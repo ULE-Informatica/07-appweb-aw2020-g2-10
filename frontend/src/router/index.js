@@ -12,6 +12,12 @@ export default new VueRouter({
       component: Home
     },
     {
+      path: '/track/:trackId',
+      name: 'track-view',
+      component: () =>
+        import(/* webpackChunkName: "single-album" */ './TrackView.vue'),
+    },
+    {
       path: "*",
       redirect: "/"
       // TODO: Add 404 page
