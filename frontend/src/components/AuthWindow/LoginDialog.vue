@@ -2,7 +2,7 @@
   <v-card>
     <v-img
       height="120px"
-      src="https://www.lucushost.com/blog/wp-content/uploads/2018/04/como-proteger-login-wordpress.png"
+      src="../../assets/login.png"
     >
       <v-container fill-height fluid>
         <v-layout>
@@ -74,7 +74,6 @@ export default {
           username: this.username,
           password: this.password
         });
-        console.log(response);
         store.dispatch("setToken", response.data.token);
         store.dispatch("setUser", response.data.user);
         this.$emit("done");

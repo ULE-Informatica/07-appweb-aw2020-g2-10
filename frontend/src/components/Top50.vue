@@ -68,7 +68,8 @@
 </template>
 
 <script>
-const axios = require("axios");
+import TrackService from "@/utils/Track";
+
 
 export default {
   name: "Top50",
@@ -90,16 +91,13 @@ export default {
     }
   },
   mounted: function() {
-    axios
-      .get("http://localhost:3000/tracks")
-      .then(response => {
-        // handle success
+    TrackService.getTracks()
+      .then (response => {
         this.tracks = response.data;
       })
-      .catch(error => {
-        // handle error
+      .catch (error => {
         console.log(error);
-      });
+      })
   }
 };
 </script>

@@ -4,6 +4,7 @@ const axios = require('axios');
 module.exports = {
 
     async getTracklist(req, res){
+
         axios.get(urls.MUSICA.top_50)
         .then(response => {
             // handle success
@@ -11,7 +12,9 @@ module.exports = {
         })
         .catch(error => {
             // handle error 
-            console.log(error);
+            res.status(400).send({
+                error: 'Error obteniendo tracks',
+            });
         })
     },
 };
