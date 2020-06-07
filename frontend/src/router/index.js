@@ -15,7 +15,13 @@ export default new VueRouter({
       path: '/track/:trackId',
       name: 'track-view',
       component: () =>
-        import(/* webpackChunkName: "single-album" */ './TrackView.vue'),
+        import(/* webpackChunkName: "track-view" */ './TrackView.vue'),
+    },
+    {
+      path: '/perfil',
+      name: 'perfil',
+      component: () =>
+        import(/* webpackChunkName: "perfil" */ './PerfilUsuario.vue'),
     },
     {
       path: "*",

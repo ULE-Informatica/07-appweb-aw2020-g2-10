@@ -36,11 +36,6 @@ export default {
       subtitle: "films · music · podcast",
       slogan: "Own your content!"
     }
-  }),
-  methods: {
-    ocultarDrawer: function() {
-      this.drawer = !this.drawer;
-    }
-  }
+  })
 };
 </script>

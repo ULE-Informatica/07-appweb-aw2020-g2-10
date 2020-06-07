@@ -155,41 +155,45 @@ export default {
     }
   },
   mounted: function() {
-    const { trackId } = this.$route.params;
-    TrackService.getTrackInfo(trackId)
-      .then(response => {
-        this.trackData = response.data;
 
-        this.image = this.trackData.album.cover_xl;
-        this.identifier = this.trackData.id;
+    if (this.isUserLoggedIn){
 
-        this.trackData.contributors.forEach(item => {
-          this.artistsName = this.artistsName + item.name + ", ";
-          this.artistsImages.push({
-            imagen: item.picture_xl,
-            nombre: item.name
+      const { trackId } = this.$route.params;
+      TrackService.getTrackInfo(trackId)
+        .then(response => {
+          this.trackData = response.data;
+
+          this.image = this.trackData.album.cover_xl;
+          this.identifier = this.trackData.id;
+
+          this.trackData.contributors.forEach(item => {
+            this.artistsName = this.artistsName + item.name + ", ";
+            this.artistsImages.push({
+              imagen: item.picture_xl,
+              nombre: item.name
+            });
           });
+
+          this.artistsName = this.artistsName.substring(
+            0,
+            this.artistsName.length - 2
+          );
+
+          this.title = this.trackData.title;
+          this.preview = this.trackData.preview;
+
+          FavoritoService.isFavorito(this.identifier, this.user.id)
+            .then(response => {
+              this.favorito = response.data;
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        })
+        .catch(error => {
+          console.log(error);
         });
-
-        this.artistsName = this.artistsName.substring(
-          0,
-          this.artistsName.length - 2
-        );
-
-        this.title = this.trackData.title;
-        this.preview = this.trackData.preview;
-
-        FavoritoService.isFavorito(this.identifier, this.user.id)
-          .then(response => {
-            this.favorito = response.data;
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    }
   }
 };
 </script>

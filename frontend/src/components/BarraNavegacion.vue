@@ -19,7 +19,7 @@
       <v-btn text icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
-      <v-btn text icon>
+      <v-btn text to="/perfil">
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
       <v-btn text @click="logout" icon class="font-weight-bold red--text">
