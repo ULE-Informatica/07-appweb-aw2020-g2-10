@@ -2,7 +2,6 @@ const AuthController = require('./controllers/AuthController');
 const AuthControllerRule = require('./rules/AuthControllerRule');
 const TrackController = require('./controllers/TrackController');
 const FavoritoController = require('./controllers/FavoritoController');
-const urls = require('./config/paths.json');
 
 module.exports = (app) => {
     
@@ -25,6 +24,13 @@ module.exports = (app) => {
         TrackController.getTrackInfo);
 
     // Obtener si es favorito
-    app.get('/favorito/', 
+    app.get('/favorito', 
         FavoritoController.isFavorito);
+    // Añadir a favoritos
+    app.post('/favorito',
+        FavoritoController.anadirFavorito);
+    // Eliminar de favoritos
+    app.delete('/favorito',
+        FavoritoController.eliminarFavorito);
 };
+
