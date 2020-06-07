@@ -12,21 +12,27 @@ export default new VueRouter({
       component: Home
     },
     {
-      path: '/track/:trackId',
-      name: 'track-view',
+      path: "/track/:trackId",
+      name: "track-view",
       component: () =>
-        import(/* webpackChunkName: "track-view" */ './TrackView.vue'),
+        import(/* webpackChunkName: "track-view" */ "./TrackView.vue")
     },
     {
-      path: '/perfil',
-      name: 'perfil',
+      path: "/perfil",
+      name: "perfil",
       component: () =>
-        import(/* webpackChunkName: "perfil" */ './PerfilUsuario.vue'),
+        import(/* webpackChunkName: "perfil" */ "./PerfilUsuario.vue")
+    },
+    {
+      path: '/listafavoritos',
+      name: 'lista-favoritos',
+      component: () =>
+        import(/* webpackChunkName: "lista-favoritos" */ './ListaFavoritos.vue'),
     },
     {
       path: "*",
       redirect: "/"
-      // TODO: Add 404 page
+      // TODO: Añadir 404 page
     }
   ]
 });

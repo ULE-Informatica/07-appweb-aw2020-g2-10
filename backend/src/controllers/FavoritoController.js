@@ -61,10 +61,10 @@ module.exports = {
                 res.send(false);
             else {
                 const favorito = await Favorito.create({
-                    producto : trackId,
-                    UserId : userId,
-                    comentario : comentario,
-                    puntuacion : puntuacion
+                    producto: trackId,
+                    UserId: userId,
+                    comentario: comentario,
+                    puntuacion: puntuacion
                 });
 
                 res.send(favorito);
@@ -101,7 +101,7 @@ module.exports = {
                     },
                 });
 
-                if (favorito === null){
+                if (favorito === null) {
                     res.status(500).send({
                         error: 'Error añadiendo a favoritos',
                     });
@@ -117,5 +117,64 @@ module.exports = {
             });
         }
 
+    },
+
+    /**
+     * Método que devuelve la lista de productos del usuario
+     * @param {*} req 
+     * @param {*} res 
+     */
+    async getListaFavoritosUser(req, res) {
+
+        try {
+            // Obtenemos los parámetros
+            const userId = req.query.id;
+
+            const lista = await Favorito.findAll({
+                where: {
+                    UserId: userId,
+                }
+            });
+
+            const listaFavoritos = [];
+
+            lista.forEach(item => {
+                listaFavoritos.push(item.dataValues)
+            })
+
+            res.send(listaFavoritos);
+
+        } catch (error) {
+            res.status(500).send({
+                error: 'Error obteniendo lista de favoritos',
+            });
+
+        }
+
+    },
+
+    /**
+     * Método para editar un favorito
+     * @param {*} req 
+     * @param {*} res 
+     */
+    async editarFavorito(req, res) {
+
+        try {
+            console.log(req);
+            await Favorito.update(req.body.params, {
+                where: {
+                    producto: req.body.params.producto,
+                    UserId: req.body.params.userId,
+                },
+            });
+            res.send({ updated: true });
+        } catch (err) {
+            res.status(500).send({
+                error: 'Error obteniendo editando el favorito',
+            });
+        }
+
     }
+
 };

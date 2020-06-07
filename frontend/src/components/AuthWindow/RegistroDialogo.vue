@@ -96,7 +96,7 @@ export default {
           email: this.email,
           username: this.username,
           password: this.password,
-          avatar: '001'
+          avatar: "001"
         });
         store.dispatch("setToken", response.data.token);
         store.dispatch("setUser", response.data.user);

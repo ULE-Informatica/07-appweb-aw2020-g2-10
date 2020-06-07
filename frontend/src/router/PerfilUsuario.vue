@@ -1,16 +1,29 @@
 <template>
   <div id="perfilUsuario">
-    <v-btn @click="goBack()" class="mt-4 ml-12" text dark rounded color="primary">
+    <v-btn
+      @click="goBack()"
+      class="mt-4 ml-12"
+      text
+      dark
+      rounded
+      color="primary"
+    >
       <v-icon class="mr-2">mdi-arrow-left-circle</v-icon>ATRÁS
     </v-btn>
     <v-container v-if="isUserLoggedIn" class="m4 text-center">
       <v-hover v-slot:default="{ hover }">
-        <v-btn outlined color="primary" icon fab @click="abrirDialog" width="150" height="150">
+        <v-btn
+          outlined
+          color="primary"
+          icon
+          fab
+          @click="abrirDialog"
+          width="150"
+          height="150"
+        >
           <v-avatar size="140">
             <v-img
-              :src="
-                  require('../assets/avatar/' + selected + '.png')
-                "
+              :src="require('../assets/avatar/' + selected + '.png')"
             ></v-img>
             <v-expand-transition>
               <div
@@ -25,7 +38,9 @@
                                             width: 100%;
                                             font-size: 1.4em;
                                             "
-              >{{ txt.change }}</div>
+              >
+                {{ txt.change }}
+              </div>
             </v-expand-transition>
           </v-avatar>
         </v-btn>
@@ -34,18 +49,39 @@
       <v-layout class="justify-center mt-lg-4 mb-4">
         <v-flex class="xs12 sm10 md8 lg6">
           <div class="mt-7">
-            <v-text-field label="Nombre" v-model="usuario.name" prepend-icon="mdi-face" required></v-text-field>
-            <v-text-field label="Email" v-model="usuario.email" prepend-icon="mdi-email" required></v-text-field>
-            <v-btn class="float-right" @click="actualizarUsuario()" color="primary">Actualizar</v-btn>
+            <v-text-field
+              label="Nombre"
+              v-model="usuario.name"
+              prepend-icon="mdi-face"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Email"
+              v-model="usuario.email"
+              prepend-icon="mdi-email"
+              required
+            ></v-text-field>
+            <v-btn
+              class="float-right"
+              @click="actualizarUsuario()"
+              color="primary"
+              >Actualizar</v-btn
+            >
           </div>
         </v-flex>
         <v-dialog v-model="dialog" max-width="500" class="text-center">
           <v-card class="text-center">
-            <v-card-title>La información ha sido actualizada con éxito</v-card-title>
-            <v-icon color="green darken-1" size="80px">mdi-check-circle-outline</v-icon>
+            <v-card-title
+              >La información ha sido actualizada con éxito</v-card-title
+            >
+            <v-icon color="green darken-1" size="80px"
+              >mdi-check-circle-outline</v-icon
+            >
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="green darken-1" text @click="dialog = false">ACEPTAR</v-btn>
+              <v-btn color="green darken-1" text @click="dialog = false"
+                >ACEPTAR</v-btn
+              >
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -53,7 +89,11 @@
           <v-card max-height="300px">
             <v-card-title>{{ txt.seleccion_avatar }}</v-card-title>
             <v-card-text>
-              <v-hover v-for="item in avatares" :key="item" v-slot:default="{ hover }">
+              <v-hover
+                v-for="item in avatares"
+                :key="item"
+                v-slot:default="{ hover }"
+              >
                 <v-btn
                   v-if="item"
                   :key="item"
@@ -65,7 +105,9 @@
                   @click="asignar(item)"
                 >
                   <v-avatar large>
-                    <v-img :src="require('../assets/avatar/' + item + '.png')"></v-img>
+                    <v-img
+                      :src="require('../assets/avatar/' + item + '.png')"
+                    ></v-img>
                     <v-expand-transition>
                       <div
                         v-if="selected != item && hover"
@@ -79,12 +121,16 @@
                                                 width: 100%;
                                                 font-size: 0.65em;
                                                 "
-                      >{{ txt.select }}</div>
+                      >
+                        {{ txt.select }}
+                      </div>
                       <div
                         v-if="selected == item"
                         class="d-flex transition-fast-in-fast-out green darken-2 v-card--reveal bold white--text avatar_icon"
                         style="font-size: 0.5em; "
-                      >{{ txt.selected }}</div>
+                      >
+                        {{ txt.selected }}
+                      </div>
                     </v-expand-transition>
                   </v-avatar>
                 </v-btn>
@@ -117,9 +163,6 @@ export default {
   name: "PerfilUsuario",
   components: {
     NoDisponible
-  },
-  props: {
-    source: String
   },
   computed: mapState(["isUserLoggedIn", "user"]),
   data: () => ({

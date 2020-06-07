@@ -7,16 +7,15 @@
         <h4 class="subheading">{{ text.slogan }}</h4>
       </v-layout>
     </v-parallax>
-    <Top50 v-if="isUserLoggedIn"/>
-    <Bienvenida v-else/>
+    <Top50 v-if="isUserLoggedIn" />
+    <Bienvenida v-else />
   </div>
 </template>
 
 <script>
 import Top50 from "@/components/Top50.vue";
-import Bienvenida from "@/components/Bienvenida.vue"
+import Bienvenida from "@/components/Bienvenida.vue";
 import { mapState } from "vuex";
-
 
 export default {
   name: "Home",

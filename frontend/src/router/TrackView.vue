@@ -10,10 +10,12 @@
         </v-flex>
         <v-flex class="xs6 sm5 md4 mt-5">
           <div>
-            <div class="titulo">{{title}}</div>
+            <div class="titulo">{{ title }}</div>
             <div class="artistas text--primary">
-              <v-icon class="icono_artistas" color="primary">mdi-account-music</v-icon>
-              {{artistsName}}
+              <v-icon class="icono_artistas" color="primary"
+                >mdi-account-music</v-icon
+              >
+              {{ artistsName }}
             </div>
             <v-container class="pa-4 text-center">
               <v-row class="fill-height" align="center" justify="center">
@@ -32,13 +34,20 @@
                   </v-btn>
                 </template>
                 <v-card>
-                  <v-card-title
-                    class="headline"
-                  >El producto será eliminaddo de su lista de favoritos, ¿desea continuar?</v-card-title>
+                  <v-card-title class="headline"
+                    >El producto será eliminaddo de su lista de favoritos,
+                    ¿desea continuar?</v-card-title
+                  >
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false">CANCELAR</v-btn>
-                    <v-btn color="red darken-1" text @click="eliminarFavorito()">
+                    <v-btn color="primary" text @click="dialog = false"
+                      >CANCELAR</v-btn
+                    >
+                    <v-btn
+                      color="red darken-1"
+                      text
+                      @click="eliminarFavorito()"
+                    >
                       ELIMINAR
                       <v-icon class="ml-1">mdi-delete-circle-outline</v-icon>
                     </v-btn>
@@ -52,7 +61,9 @@
                   </v-btn>
                 </template>
                 <v-card class="text-center">
-                  <v-card-title class="headline grey lighten-2" primary-title>Añadir a favoritos...</v-card-title>
+                  <v-card-title class="headline grey lighten-2" primary-title
+                    >Añadir a favoritos...</v-card-title
+                  >
                   <v-rating
                     v-model="puntuacion"
                     color="yellow darken-3"
@@ -72,8 +83,14 @@
                   ></v-textarea>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false">CANCELAR</v-btn>
-                    <v-btn color="pink lighten-1" class="ml-3" @click="anadirFavorito()">
+                    <v-btn color="primary" text @click="dialog = false"
+                      >CANCELAR</v-btn
+                    >
+                    <v-btn
+                      color="pink lighten-1"
+                      class="ml-3"
+                      @click="anadirFavorito()"
+                    >
                       LOVE IT!
                       <v-icon class="ml-2">mdi-heart</v-icon>
                     </v-btn>
@@ -92,7 +109,6 @@
 <script>
 import router from "@/router/index";
 import { mapState } from "vuex";
-
 
 import TrackService from "@/utils/Track";
 import FavoritoService from "@/utils/Favorito";
@@ -156,9 +172,7 @@ export default {
     }
   },
   mounted: function() {
-
-    if (this.isUserLoggedIn){
-
+    if (this.isUserLoggedIn) {
       const { trackId } = this.$route.params;
       TrackService.getTrackInfo(trackId)
         .then(response => {
