@@ -19,7 +19,6 @@ module.exports = {
             // Insertamos al usuario en la bdd
             const user = await User.create(req.body.credential);
             const userJson = user.toJSON();
-            console.log(userJson);
             delete userJson.password;
             res.send({
                 user: userJson,

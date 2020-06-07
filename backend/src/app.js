@@ -15,5 +15,7 @@ sequelize.sync()
     .then(() => {
         app.listen(3000);
         console.log(`\n---\n**Server started on port 3000**`);
-        console.log(`\n---\n**DB connection success**`);
+        console.log(`**DB connection success**`);
+        console.log(`---\n`);
+
     });
