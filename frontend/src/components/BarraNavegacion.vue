@@ -1,11 +1,13 @@
 <template>
   <v-app-bar color="primary" dark app text fixed>
     <v-toolbar-items class="align-center">
+      <v-btn fab icon tile to="/" color="primary">
       <v-img
         height="50"
         width="50"
         :src="require('../assets/logo_fondo_azul.png')"
       ></v-img>
+      </v-btn>
     </v-toolbar-items>
     <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
       <span class="mr-3 font-weight-bold">{{ text.titulo }}</span>
@@ -13,19 +15,17 @@
     <v-spacer />
     <v-toolbar-items v-if="isUserLoggedIn" class="align-center">
       <v-chip class="ma-2 text--primary" color="white" label>
-       <v-avatar class="mr-2">
-            <v-img
-              :src="
-                  require('../assets/avatar/' + user.avatar + '.png')
-                "
+        <v-avatar class="mr-2">
+          <v-img
+            :src="require('../assets/avatar/' + user.avatar + '.png')"
           ></v-img>
-       </v-avatar>
+        </v-avatar>
         {{ user.username }}
       </v-chip>
-      <v-btn text icon>
+      <v-btn text icon to="/listafavoritos">
         <v-icon>mdi-heart</v-icon>
       </v-btn>
-      <v-btn text to="/perfil">
+      <v-btn text icon to="/perfil">
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
       <v-btn text @click="logout" icon class="font-weight-bold red--text">

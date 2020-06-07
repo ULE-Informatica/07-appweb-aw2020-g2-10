@@ -1,14 +1,16 @@
 <template>
-    <v-container>
-      <div class="contenido">
-        <div class="sm-col-12 contenido">
-          <h2 class="text-center header texto h_2">
-                PARA ACCEDER A ESTE LUGAR DEBE INICIAR SESIÓN  
-          </h2>
-            <v-icon class="icono" style="margin-bottom: 37px;">mdi-emoticon-sad</v-icon>
-        </div>
+  <v-container>
+    <div class="contenido">
+      <div class="sm-col-12 contenido">
+        <h2 class="text-center header texto h_2">
+          PARA ACCEDER A ESTE LUGAR DEBE INICIAR SESIÓN
+        </h2>
+        <v-icon class="icono" style="margin-bottom: 37px;"
+          >mdi-emoticon-sad</v-icon
+        >
       </div>
-    </v-container>
+    </div>
+  </v-container>
 </template>
 
 <script></script>
@@ -30,14 +32,14 @@
 }
 
 .h_2 {
-    font-size: 3.56rem;
-    line-height: 110%;
-    margin: 1.78rem 0 1.424rem 0;
-    color: darkred;
+  font-size: 3.56rem;
+  line-height: 110%;
+  margin: 1.78rem 0 1.424rem 0;
+  color: darkred;
 }
 
 .icono {
-    font-size: 200px;
-    color: darkred;
+  font-size: 200px;
+  color: darkred;
 }
 </style>

@@ -33,6 +33,12 @@ module.exports = (app) => {
     // Eliminar de favoritos
     app.delete('/favorito',
         FavoritoController.eliminarFavorito);
+    // Obtener la lista de favoritos del usuario
+    app.get('/listafavoritos',
+        FavoritoController.getListaFavoritosUser);
+    // Editar un favorito
+    app.post('/editarfavorito',
+        FavoritoController.editarFavorito);
 
     // Modificar datos de usuario
     app.put('/perfil',

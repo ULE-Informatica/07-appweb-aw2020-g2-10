@@ -9,7 +9,6 @@ module.exports = {
      */
     async actualizar(req, res) {
         try {
-            console.log(req);
             await User.update(req.body, {
                 where: {
                     id: req.body.id,

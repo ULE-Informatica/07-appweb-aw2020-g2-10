@@ -1,9 +1,6 @@
 <template>
   <v-card>
-    <v-img
-      height="120px"
-      src="../../assets/login.png"
-    >
+    <v-img height="120px" src="../../assets/login.png">
       <v-container fill-height fluid>
         <v-layout>
           <v-flex xs12 align-end d-flex>
