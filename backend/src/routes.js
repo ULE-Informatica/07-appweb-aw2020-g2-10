@@ -2,6 +2,7 @@ const AuthController = require('./controllers/AuthController');
 const AuthControllerRule = require('./rules/AuthControllerRule');
 const TrackController = require('./controllers/TrackController');
 const FavoritoController = require('./controllers/FavoritoController');
+const UserController = require('./controllers/UserController');
 
 module.exports = (app) => {
     
@@ -32,5 +33,9 @@ module.exports = (app) => {
     // Eliminar de favoritos
     app.delete('/favorito',
         FavoritoController.eliminarFavorito);
+
+    // Modificar datos de usuario
+    app.put('/perfil',
+        UserController.actualizar);
 };
 

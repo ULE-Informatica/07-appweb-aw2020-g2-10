@@ -1,8 +1,8 @@
-import API from "./API";
+import Api from "./API";
 
 export default {
     isFavorito(trackId, userId){
-        return API().get("favorito", {
+        return Api().get("favorito", {
             params: {
                 trackId: trackId,
                 userId: userId
@@ -10,10 +10,10 @@ export default {
         })
     },
     anadirFavorito(params){
-        return API().post('favorito', { params });
+        return Api().post('favorito', { params });
     },
     eliminarFavorito(params){
-        return API().delete('favorito', { params })
+        return Api().delete('favorito', { params })
     }
 
 };

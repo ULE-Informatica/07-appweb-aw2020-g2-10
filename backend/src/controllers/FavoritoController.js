@@ -106,7 +106,6 @@ module.exports = {
                         error: 'Error añadiendo a favoritos',
                     });
                 } else {
-                    console.log('LLego');
                     await favorito.destroy();
                     res.send(favorito);
                 }

@@ -13,13 +13,19 @@
     <v-spacer />
     <v-toolbar-items v-if="isUserLoggedIn" class="align-center">
       <v-chip class="ma-2 text--primary" color="white" label>
-        <v-icon left>mdi-face</v-icon>
+       <v-avatar class="mr-2">
+            <v-img
+              :src="
+                  require('../assets/avatar/' + user.avatar + '.png')
+                "
+          ></v-img>
+       </v-avatar>
         {{ user.username }}
       </v-chip>
       <v-btn text icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
-      <v-btn text icon>
+      <v-btn text to="/perfil">
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
       <v-btn text @click="logout" icon class="font-weight-bold red--text">

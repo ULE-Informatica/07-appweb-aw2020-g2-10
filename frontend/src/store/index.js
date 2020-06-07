@@ -19,8 +19,8 @@ export default new Vuex.Store({
     },
     updateUser(st, user) {
       st.user.name = user.name;
-      st.user.address = user.address;
-      st.user.phonenumber = user.phonenumber;
+      st.user.email = user.email;
+      st.user.avatar = user.avatar;
     },
     setIsUserLoggedIn(st, isUserLoggedIn) {
       st.isUserLoggedIn = isUserLoggedIn;

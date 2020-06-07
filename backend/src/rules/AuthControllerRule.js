@@ -17,6 +17,7 @@ module.exports = {
             password: Joi.string().regex(/^[a-zA-Z0-9]{6,32}$/),
             name: Joi.string().alphanum(),
             username: Joi.string(),
+            avatar: Joi.string().regex(/^[0-9][0-9][0-9]$/)
         });
 
         const { error } = Joi.validate(req.body.credential, schema);
