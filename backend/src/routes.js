@@ -1,5 +1,7 @@
 const AuthController = require('./controllers/AuthController');
 const AuthControllerRule = require('./rules/AuthControllerRule');
+const TrackController = require('./controllers/TrackController');
+const FavoritoController = require('./controllers/FavoritoController');
 
 module.exports = (app) => {
     
@@ -11,6 +13,24 @@ module.exports = (app) => {
 
     // LOGIN
     app.post('/login',
-    AuthControllerRule.requirement,
-    AuthController.login);
+        AuthControllerRule.requirement,
+        AuthController.login);
+
+    // TOP 50
+    app.get('/tracks',
+        TrackController.getTracklist);
+    // Obtener info de track    
+    app.get('/tracks/:trackId',
+        TrackController.getTrackInfo);
+
+    // Obtener si es favorito
+    app.get('/favorito', 
+        FavoritoController.isFavorito);
+    // Añadir a favoritos
+    app.post('/favorito',
+        FavoritoController.anadirFavorito);
+    // Eliminar de favoritos
+    app.delete('/favorito',
+        FavoritoController.eliminarFavorito);
 };
+

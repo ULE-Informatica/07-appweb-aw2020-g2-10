@@ -2,6 +2,7 @@
     "MUSICA": {
         "general": "https://api.deezer.com/",
         "playlist": "https://api.deezer.com/playlist/",
-        "top_50" : "https://api.deezer.com/playlist/1116190041"
+        "top_50" : "https://api.deezer.com/playlist/1116190041",
+        "track": "https://api.deezer.com/track/"
     }
 }
