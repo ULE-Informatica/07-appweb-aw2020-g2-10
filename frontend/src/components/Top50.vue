@@ -2,8 +2,8 @@
   <v-container fluid grid-list-md>
     <v-layout justify-center>
       <v-flex xs10>
-        <h2 class="ml-4 pb-3">Top 50 de España! 🇪🇸</h2>
-        <v-row class="flex-start row">
+        <h2 class="ml-4 pb-3">Hits del momento en España! 🇪🇸</h2>
+        <v-row class="flex-start row mb-12">
           <v-col class="col-3" v-for="(item, i) in tracks" :key="i">
             <v-hover v-slot:default="{ hover }">
               <v-card
@@ -23,9 +23,7 @@
                       dark
                       @click.prevent="pause()"
                     >
-                      <v-icon :class="{ 'show-btns': hover }"
-                        >> mdi-pause-circle-outline</v-icon
-                      >
+                      <v-icon :class="{ 'show-btns': hover }">> mdi-pause-circle-outline</v-icon>
                     </v-btn>
                     <v-btn
                       v-if="!playing"
@@ -35,20 +33,28 @@
                       dark
                       @click.prevent="play(item.preview)"
                     >
-                      <v-icon :class="{ 'show-btns': hover }"
-                        >> mdi-play-circle-outline</v-icon
-                      >
+                      <v-icon :class="{ 'show-btns': hover }">> mdi-play-circle-outline</v-icon>
                     </v-btn>
                   </v-img>
                 </div>
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <v-list-item-subtitle class="overline mb-2">{{
+                    <v-list-item-subtitle class="subtitle-2 mb-2">
+                      {{
                       item.artist.name
-                    }}</v-list-item-subtitle>
-                    <v-list-item-title class="headline mb-1">{{
+                      }}
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="headline mb-1">
+                      {{
                       item.title
-                    }}</v-list-item-title>
+                      }}
+                    </v-list-item-title>
+                    <v-list-item-subtitle class="overline mb-2">
+                      NÚMERO
+                      {{
+                      i+1
+                      }}
+                    </v-list-item-subtitle>
                     <v-btn
                       text
                       dark
@@ -108,6 +114,10 @@ export default {
       .catch(error => {
         console.log(error);
       });
+  },
+  beforeDestroy: function() {
+    this.currentAudio.pause();
+    this.currentAudio = new Audio();
   }
 };
 </script>

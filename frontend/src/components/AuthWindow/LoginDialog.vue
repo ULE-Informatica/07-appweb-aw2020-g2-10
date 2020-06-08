@@ -4,7 +4,7 @@
       <v-container fill-height fluid>
         <v-layout>
           <v-flex xs12 align-end d-flex>
-            <span class="headline white--text">Sign in</span>
+            <div class="caja">INICIO DE SESIÓN</div>
           </v-flex>
         </v-layout>
       </v-container>
@@ -93,5 +93,16 @@ export default {
   color: white;
   border-radius: 4px;
   padding-left: 4px;
+}
+.caja {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  background: #ee0467;
+  padding: 4px;
+  border-radius: 5px;
+  border-color: black;
+  border: 2px solid #0000;
 }
 </style>

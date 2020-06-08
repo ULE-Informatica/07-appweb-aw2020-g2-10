@@ -21,4 +21,34 @@ module.exports = {
             });
         }
     },
+
+    async getUser(req, res) {
+
+        try {
+
+            console.log(req.params.userId);
+
+            const usuario = await User.findOne({
+                where: {
+                    id: req.params.userId,
+                },
+            });
+
+            if (usuario != null)
+                res.send({
+                    username: usuario.username,
+                    avatar: usuario.avatar,
+                });
+            else
+                res.status(500).send({
+                    error: 'Error obteniendo info de user',
+                });
+
+        } catch (error) {
+            res.status(500).send({
+                error: 'Error obteniendo info de user',
+            });
+        }
+
+    }
 };

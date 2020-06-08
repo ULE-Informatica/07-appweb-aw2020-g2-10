@@ -11,11 +11,14 @@ module.exports = {
     },
 
     register(req, res, next) {
+
+        console.log(req.body.credential);
+
         // Comprobamos los campos introducidos por el usuario
         const schema = Joi.object().keys({
             email: Joi.string().email().required(),
             password: Joi.string().regex(/^[a-zA-Z0-9]{6,32}$/),
-            name: Joi.string().alphanum(),
+            name: Joi.string(),
             username: Joi.string(),
             avatar: Joi.string().regex(/^[0-9][0-9][0-9]$/)
         });
@@ -23,6 +26,7 @@ module.exports = {
         const { error } = Joi.validate(req.body.credential, schema);
         
         if (error) {
+            console.log(error);
             console.log('Información inválida');
             res.status(400).send({
                 error: 'Información inválida',
