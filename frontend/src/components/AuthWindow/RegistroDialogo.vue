@@ -220,4 +220,14 @@ export default {
   border-color: black;
   border: 2px solid #0000;
 }
+
+.avatar_icon {
+  height: 100%;
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: 0.8;
+  position: absolute;
+  width: 100%;
+}
 </style>
