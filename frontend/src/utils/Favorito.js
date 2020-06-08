@@ -20,5 +20,8 @@ export default {
   },
   editarFavorito(params) {
     return Api().post("editarfavorito", { params })
+  },
+  getAllComentarios(trackId) {
+    return Api().get(`favorito/${trackId}`)
   }
 };

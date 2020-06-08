@@ -9,8 +9,8 @@
       ></v-img>
       </v-btn>
     </v-toolbar-items>
-    <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
-      <span class="mr-3 font-weight-bold">{{ text.titulo }}</span>
+    <v-toolbar-title style="width: 300px" class="ml-0 pl-4" >
+      <v-btn class="mr-3 primary font-weight-bold headline" to="/" >{{ text.titulo }}</v-btn>
     </v-toolbar-title>
     <v-spacer />
     <v-toolbar-items v-if="isUserLoggedIn" class="align-center">

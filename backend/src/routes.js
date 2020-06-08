@@ -39,9 +39,15 @@ module.exports = (app) => {
     // Editar un favorito
     app.post('/editarfavorito',
         FavoritoController.editarFavorito);
+    // Obtener comentarios de favorito
+    app.get('/favorito/:trackId',
+        FavoritoController.getComentarios);
 
     // Modificar datos de usuario
     app.put('/perfil',
         UserController.actualizar);
+    // Obtener info de un user
+    app.get('/perfil/:userId',
+        UserController.getUser);
 };
 

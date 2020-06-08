@@ -161,7 +161,6 @@ module.exports = {
     async editarFavorito(req, res) {
 
         try {
-            console.log(req);
             await Favorito.update(req.body.params, {
                 where: {
                     producto: req.body.params.producto,
@@ -172,6 +171,39 @@ module.exports = {
         } catch (err) {
             res.status(500).send({
                 error: 'Error obteniendo editando el favorito',
+            });
+        }
+
+    },
+
+    /**
+     * Método para obtener todos los comentarios del producto pasado en parámetro
+     * @param {*} req 
+     * @param {*} res 
+     */
+    async getComentarios(req, res) {
+
+        try {
+        
+            if (req.params.trackId != undefined){
+
+                const lista = await Favorito.findAll({
+                    where: {
+                        producto: req.params.trackId,
+                    }
+                });
+
+                res.send(lista);
+                
+            } else {
+                res.status(500).send({
+                    error: 'Error en parámetros',
+                }); 
+            }
+            
+        } catch (error) {
+            res.status(500).send({
+                error: 'Error obteniendo comentarios de favorito',
             });
         }
 
