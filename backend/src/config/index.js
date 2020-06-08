@@ -6,7 +6,7 @@ module.exports = {
     user: 'root',
     //user: "awuser",
     password: "12345678",
-    //password: "awpass"
+    //password: "awpass",
     options: {
       dialect: "mysql",
       host: "localhost",

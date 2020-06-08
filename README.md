@@ -1,5 +1,6 @@
-# EJECUCIÓN DE THE CONTENT BOX 📦 
+# THE CONTENT BOX 📦 
 
+## EJECUCIÓN 🚀
 1. Arrancamos el servidor e introducimos los credenciales:
 	- usuario : awuser
 	- password: aspas
@@ -42,7 +43,7 @@
 19. En el navegador, podremos acceder a la aplicación web introduciendo la IP de nuestro servidor obtenida en el punto 2.
 
 
-# FUNCIONALIDAD DE LA APP 🚀 
+## FUNCIONALIDAD DE LA APP 🦾
 
 - Para utilizar la aplicación el usuario deberá registrarse eligiendo un avatar, nombre, nombre de usuario, email y contraseña.
 - El usuario podrá iniciar sesión introduciendo su nombre de usuario y su contraseña.
