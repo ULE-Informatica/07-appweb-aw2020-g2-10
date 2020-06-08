@@ -12,8 +12,6 @@ module.exports = {
 
     register(req, res, next) {
 
-        console.log(req.body.credential);
-
         // Comprobamos los campos introducidos por el usuario
         const schema = Joi.object().keys({
             email: Joi.string().email().required(),

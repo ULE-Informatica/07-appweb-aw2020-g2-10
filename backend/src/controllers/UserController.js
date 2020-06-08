@@ -26,8 +26,6 @@ module.exports = {
 
         try {
 
-            console.log(req.params.userId);
-
             const usuario = await User.findOne({
                 where: {
                     id: req.params.userId,
