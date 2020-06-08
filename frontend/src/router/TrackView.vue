@@ -113,10 +113,10 @@
         </v-flex>
       </v-layout>
       <template>
-        <v-cointainer fluid class="mt-10">
-          <v-row justify="center" class="mt-10">
+        <v-cointainer fluid class="mt-10 mb-12">
+          <v-row justify="center" class="mt-10 mb-12">
             <v-subheader>Comentarios de usuarios</v-subheader>
-            <v-expansion-panels popout>
+            <v-expansion-panels popout class="mb-12">
               <v-expansion-panel v-for="(comentarios, i) in comentarios" :key="i" hide-actions>
                 <v-expansion-panel-header>
                   <v-row align="center" class="spacer" no-gutters>
@@ -152,12 +152,6 @@
             </v-expansion-panels>
           </v-row>
         </v-cointainer>
-      </template>
-      <template class="mt-5">
-        <v-btn color="primary" @click="actualizar" class="mt-10">
-          RELOAD
-          <v-icon class="ml-2">mdi-reload</v-icon>
-        </v-btn>
       </template>
     </v-container>
     <NoDisponible v-if="!isUserLoggedIn" />
