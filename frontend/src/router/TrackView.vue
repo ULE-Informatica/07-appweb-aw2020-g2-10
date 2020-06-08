@@ -6,22 +6,45 @@
       </v-btn>
       <v-layout class="justify-center">
         <v-flex class="xs6 sm5 md4 mt-5">
-          <img :src="image" alt class="image" />
+          <v-img :src="image" alt class="image">
+            <v-btn
+              v-if="playing"
+              :class="{ 'show-btns': hover }"
+              class="boton mx-2"
+              fab
+              dark
+              width=100
+              height=100
+              @click.prevent="pause()"
+            >
+              <v-icon :class="{ 'show-btns': hover }" style="font-size: 80px">> mdi-pause-circle-outline</v-icon>
+            </v-btn>
+            <v-btn
+              v-if="!playing"
+              :class="{ 'show-btns': hover }"
+              class="boton mx-2"
+              fab
+              dark
+              width=100
+              height=100
+              @click.prevent="play(preview)"
+            >
+              <v-icon :class="{ 'show-btns': hover }" style="font-size: 80px">> mdi-play-circle-outline</v-icon>
+            </v-btn>
+          </v-img>
         </v-flex>
         <v-flex class="xs6 sm5 md4 mt-5">
           <div>
             <div class="titulo">{{ title }}</div>
             <div class="artistas text--primary">
-              <v-icon class="icono_artistas" color="primary"
-                >mdi-account-music</v-icon
-              >
+              <v-icon class="icono_artistas" color="primary">mdi-account-music</v-icon>
               {{ artistsName }}
             </div>
             <v-container class="pa-4 text-center">
               <v-row class="fill-height" align="center" justify="center">
                 <template v-for="(item, i) in artistsImages">
                   <v-col :key="i" cols="12" md="4">
-                    <img :src="item.imagen" class="image_artist" />
+                    <v-img :src="item.imagen" class="image_artist" />
                   </v-col>
                 </template>
               </v-row>
@@ -34,20 +57,14 @@
                   </v-btn>
                 </template>
                 <v-card>
-                  <v-card-title class="headline"
-                    >El producto será eliminaddo de su lista de favoritos,
-                    ¿desea continuar?</v-card-title
-                  >
+                  <v-card-title class="headline">
+                    El producto será eliminaddo de su lista de favoritos,
+                    ¿desea continuar?
+                  </v-card-title>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false"
-                      >CANCELAR</v-btn
-                    >
-                    <v-btn
-                      color="red darken-1"
-                      text
-                      @click="eliminarFavorito()"
-                    >
+                    <v-btn color="primary" text @click="dialog = false">CANCELAR</v-btn>
+                    <v-btn color="red darken-1" text @click="eliminarFavorito()">
                       ELIMINAR
                       <v-icon class="ml-1">mdi-delete-circle-outline</v-icon>
                     </v-btn>
@@ -61,9 +78,7 @@
                   </v-btn>
                 </template>
                 <v-card class="text-center">
-                  <v-card-title class="headline grey lighten-2" primary-title
-                    >Añadir a favoritos...</v-card-title
-                  >
+                  <v-card-title class="headline grey lighten-2" primary-title>Añadir a favoritos...</v-card-title>
                   <v-rating
                     v-model="puntuacion"
                     color="yellow darken-3"
@@ -83,14 +98,8 @@
                   ></v-textarea>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false"
-                      >CANCELAR</v-btn
-                    >
-                    <v-btn
-                      color="pink lighten-1"
-                      class="ml-3"
-                      @click="anadirFavorito()"
-                    >
+                    <v-btn color="primary" text @click="dialog = false">CANCELAR</v-btn>
+                    <v-btn color="pink lighten-1" class="ml-3" @click="anadirFavorito()">
                       LOVE IT!
                       <v-icon class="ml-2">mdi-heart</v-icon>
                     </v-btn>
@@ -127,7 +136,8 @@ export default {
     preview: new Audio(),
     dialog: false,
     puntuacion: 0,
-    comentario: ""
+    comentario: "",
+    playing: false
   }),
   components: {
     NoDisponible
@@ -169,6 +179,16 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    play(audio) {
+      this.playing = true;
+      this.currentAudio = new Audio(audio);
+      this.currentAudio.play();
+    },
+    pause() {
+      this.playing = false;
+      this.currentAudio.pause();
+      this.currentAudio = new Audio();
     }
   },
   mounted: function() {
@@ -244,5 +264,14 @@ export default {
 
 .row::after {
   display: flex;
+}
+
+.boton {
+  position: absolute;
+  top: 50%;
+  left: 46%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  border: none;
 }
 </style>
