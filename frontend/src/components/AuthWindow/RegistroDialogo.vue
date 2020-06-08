@@ -1,13 +1,10 @@
 <template>
   <v-card>
-    <v-img
-      height="120px"
-      src="https://img.freepik.com/vector-gratis/mesa-trabajo-escritor-hoja-papel-computadora-contenido-escrito-dibujos-animados-plana_101884-733.jpg?size=626&ext=jpg"
-    >
-      <v-container fill-height fluid>
+    <v-img height="120px" src="../../assets/registro.jpg">
+      <v-container class="fill-height fluid">
         <v-layout>
-          <v-flex xs12 align-end d-flex>
-            <span class="headline white--text">Sign up</span>
+          <v-flex class="xs12 align-end d-flex">
+            <div class="caja">REGISTRO</div>
           </v-flex>
         </v-layout>
       </v-container>
@@ -53,9 +50,7 @@
 
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="primary" :disabled="!valid" @click="register">
-        Registrarse
-      </v-btn>
+      <v-btn color="primary" :disabled="!valid" @click="register">Registrarse</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -120,5 +115,16 @@ export default {
   color: white;
   border-radius: 4px;
   padding-left: 4px;
+}
+.caja {
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  background: #ee0467;
+  padding: 4px;
+  border-radius: 5px;
+  border-color: black;
+  border: 2px solid #0000;
 }
 </style>
